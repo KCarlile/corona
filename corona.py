@@ -32,9 +32,6 @@ def main():
     global gen_y
     global gen_z
 
-    print('Infection Factor:', infection_factor)
-    print('Generations Count:', generations_count)
-
     if len(sys.argv) == 3:
         # get rid of command path in args
         sys.argv.pop(0)
@@ -48,6 +45,9 @@ def main():
         # 0 parameters, so assume defaults
         infection_factor = FACTOR
         generations_count = GENERATIONS
+
+    print('Infection Factor:', infection_factor)
+    print('Generations Count:', generations_count)
 
     new_infections = 0
     gen_y = 0
