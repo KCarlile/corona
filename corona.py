@@ -55,8 +55,8 @@ def main():
 
     for gen in range(INITIAL, generations_count):
         print('----------')
-        #print('gen_y:', gen_y)
-        #print('gen_z:', gen_z)
+        # print('gen_y:', gen_y)
+        # print('gen_z:', gen_z)
 
         if gen > 0:
             new_infections = (gen_z - gen_y) * infection_factor
@@ -64,7 +64,7 @@ def main():
             gen_z = gen_y + new_infections
 
         generations.insert(gen, gen_z)
-        #print('Generation ', gen, ': ', generations, sep="")
+        # print('Generation ', gen, ': ', generations, sep="")
         print('Generation', gen)
         print('   New Infections:', new_infections)
         print('   Total Infections:', gen_z)
@@ -73,7 +73,12 @@ def main():
     x = [*range(0, len(generations))]
     y = generations
 
-    plt.plot(x, y)
+    plt.xlabel('Generation')
+    plt.ylabel('Infected')
+    plt.title('COVID-19 Infections by Generation')
+    plt.text(0, generations[-1] * .9, 'Generations: ' +
+             str(len(generations)) + "\n" + 'Infections: ' + str(generations[-1]))
+    plt.plot(x, y, 'bo', x, y, 'k')
     plt.show()
 
 
